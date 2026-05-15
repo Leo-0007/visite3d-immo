@@ -129,10 +129,32 @@
   }
 }
 
-@keyframes fade-up {
+/* ── Glass morphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Subtle grid background ── */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Entrance animations ── */
+@keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -140,18 +162,12 @@
   }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out both;
+.animate-slide-up {
+  animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.animate-fade-up-delay-1 {
-  animation: fade-up 0.6s ease-out 0.1s both;
-}
-
-.animate-fade-up-delay-2 {
-  animation: fade-up 0.6s ease-out 0.2s both;
-}
-
-.animate-fade-up-delay-3 {
-  animation: fade-up 0.6s ease-out 0.3s both;
-}
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.36s; }
+.delay-4 { animation-delay: 0.48s; }
+.delay-5 { animation-delay: 0.60s; }
