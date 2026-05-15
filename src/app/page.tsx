@@ -14,7 +14,7 @@ const STRIPE_LINK_SINGLE = "#"; // TODO: remplacer par ton Stripe Payment Link
 const STRIPE_LINK_PACK10 = "#";
 const STRIPE_LINK_PACK50 = "#";
 const CONTACT_EMAIL = "lionel.ndombele@gmail.com";
-const PLAYCANVAS_DEMO_URL = ""; // TODO: remplacer par l'URL PlayCanvas de ta demo
+const DEMO_3D_URL = "https://cloud.splatlabs.ai/viewer/f95e1016-b5db-40ae-81cc-c6354b1c470c?view=splat";
 
 function Navbar() {
   return (
@@ -121,29 +121,13 @@ function DemoSection() {
           </p>
         </div>
         <div className="mt-10 overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl shadow-black/40">
-          {PLAYCANVAS_DEMO_URL ? (
-            <iframe
-              src={PLAYCANVAS_DEMO_URL}
-              width="100%"
-              height="500"
-              className="block w-full sm:h-[600px]"
-              allow="fullscreen; xr-spatial-tracking"
-            />
-          ) : (
-            <div className="flex h-[500px] items-center justify-center sm:h-[600px]">
-              <div className="text-center">
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-blue-500/10">
-                  <CubeIcon />
-                </div>
-                <p className="text-xl font-semibold text-white">
-                  Demo 3D bientot disponible
-                </p>
-                <p className="mt-2 text-sm text-slate-500">
-                  Visite photorealiste en Gaussian Splatting — navigable sur mobile et desktop
-                </p>
-              </div>
-            </div>
-          )}
+          <iframe
+            src={DEMO_3D_URL}
+            width="100%"
+            height="500"
+            className="block w-full sm:h-[600px]"
+            allow="fullscreen; xr-spatial-tracking"
+          />
         </div>
       </div>
     </section>
@@ -661,13 +645,6 @@ function FrancIcon() {
   );
 }
 
-function CubeIcon() {
-  return (
-    <svg className="h-10 w-10 text-blue-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-    </svg>
-  );
-}
 
 export default function Home() {
   return (
