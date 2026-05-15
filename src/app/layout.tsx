@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SmoothScrollProvider } from "./providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Visite3D Immo — Visite 3D photoréaliste de votre bien en 24h",
+  title: "Visite3D Immo — Visite 3D navigable de votre bien | Dès 29 CHF",
   description:
-    "Transformez une vidéo smartphone en visite 3D immersive. 29 CHF par tour. Sans caméra spéciale. Livré en 24h. Service suisse.",
+    "Transformez une vidéo smartphone en visite 3D immersive. Vos acheteurs explorent librement chaque pièce. 29 CHF par bien. Sans caméra spéciale. Livré en 24h.",
   keywords: [
     "visite 3D",
     "immobilier",
@@ -28,9 +29,9 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://visite3d.vercel.app"),
   openGraph: {
-    title: "Visite3D — Visite 3D photoréaliste en 24h | Dès 29 CHF",
+    title: "Visite3D — Visite 3D navigable en 24h | Dès 29 CHF",
     description:
-      "Transformez une vidéo smartphone en visite 3D immersive pour vos annonces immobilières. Sans caméra spéciale. Livré en 24h.",
+      "Vos acheteurs explorent le bien en 3D depuis leur écran. Filmez avec votre smartphone, on s'occupe du reste. 29 CHF par bien.",
     url: "https://visite3d.vercel.app",
     siteName: "Visite3D Immo",
     locale: "fr_CH",
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Visite3D — Visite 3D photoréaliste en 24h",
+    title: "Visite3D — Visite 3D navigable en 24h",
     description:
-      "Transformez une vidéo smartphone en visite 3D immersive. Dès 29 CHF. Sans caméra spéciale.",
+      "Vos acheteurs explorent le bien en 3D depuis leur écran. Dès 29 CHF par bien. Sans caméra spéciale.",
   },
   robots: {
     index: true,
@@ -61,7 +62,9 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#060a13" />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#060a13]">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }
