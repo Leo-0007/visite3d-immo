@@ -20,7 +20,7 @@ const CONTACT_EMAIL = "lionel.ndombele@gmail.com";
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04]">
+    <nav className="fixed top-0 z-50 w-full border-b border-white/[0.04] bg-[#060a13]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/" className="text-lg font-bold text-white tracking-tight">
           Visite<span className="text-blue-400">3D</span>
@@ -75,7 +75,7 @@ function HeroSection() {
         </div>
 
         <h1 className="animate-slide-up delay-1 mt-8 text-[2.75rem] font-bold tracking-tight text-white sm:text-6xl lg:text-7xl leading-[1.08]">
-          Visite 3D photorealiste
+          Visite 3D photoréaliste
           <br />
           <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-violet-400 bg-clip-text text-transparent">
             de votre bien en 24h
@@ -83,10 +83,10 @@ function HeroSection() {
         </h1>
 
         <p className="animate-slide-up delay-2 mx-auto mt-7 max-w-xl text-lg text-white/40 leading-relaxed">
-          Transformez une video smartphone en visite 3D immersive navigable.
+          Transformez une vidéo smartphone en visite 3D immersive navigable.
           <br className="hidden sm:block" />
-          Sans camera speciale. Sans abonnement.{" "}
-          <span className="text-white/80 font-medium">Des 29 CHF.</span>
+          Sans caméra spéciale. Sans abonnement.{" "}
+          <span className="text-white/80 font-medium">Dès 29 CHF.</span>
         </p>
 
         <div className="animate-slide-up delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -115,7 +115,7 @@ function HeroSection() {
             <CheckCircle /> Smartphone suffit
           </span>
           <span className="flex items-center gap-2">
-            <CheckCircle /> Livre en 24h
+            <CheckCircle /> Livré en 24h
           </span>
           <span className="flex items-center gap-2">
             <CheckCircle /> 10x moins cher que Matterport
@@ -139,10 +139,10 @@ function DemoSection() {
             Demo interactive
           </p>
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Naviguez librement dans cet interieur
+            Naviguez librement dans cet intérieur
           </h2>
           <p className="mt-3 text-white/30 text-sm">
-            Cliquez et deplacez pour explorer chaque piece — exactement comme vos acheteurs le feront
+            Cliquez et déplacez pour explorer chaque pièce — exactement comme vos acheteurs le feront
           </p>
         </div>
 
@@ -180,10 +180,10 @@ function DemoSection() {
 
 function MetricsBar() {
   const metrics = [
-    { value: "24h", label: "Delai de livraison" },
+    { value: "24h", label: "Délai de livraison" },
     { value: "29 CHF", label: "Par visite 3D" },
-    { value: "5 min", label: "De capture video" },
-    { value: "12 mois", label: "Hebergement inclus" },
+    { value: "5 min", label: "De capture vidéo" },
+    { value: "12 mois", label: "Hébergement inclus" },
   ];
 
   return (
@@ -235,10 +235,10 @@ function BentoFeatures() {
                 <CameraIcon />
               </div>
               <h3 className="text-xl font-semibold text-white">
-                Qualite photorealiste
+                Qualité photoréaliste
               </h3>
               <p className="mt-3 text-sm text-white/35 leading-relaxed">
-                Technologie Gaussian Splatting — la meme utilisee par Zillow aux Etats-Unis. Vrais reflets, vraie lumiere, vrai parquet. Plus immersif qu&apos;une visite 360 classique.
+                Technologie Gaussian Splatting — la meme utilisée par Zillow aux États-Unis. Vrais reflets, vraie lumière, vrai parquet. Plus immersif qu&apos;une visite 360 classique.
               </p>
             </div>
             <div className="mt-8 rounded-xl bg-white/[0.03] p-4">
@@ -248,7 +248,7 @@ function BentoFeatures() {
                 </span>
                 <div>
                   <p className="text-white/60 font-medium">Navigation libre et continue</p>
-                  <p className="text-[11px] text-white/25">Pas de teleportation entre points fixes</p>
+                  <p className="text-[11px] text-white/25">Pas de téléportation entre points fixes</p>
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@ function BentoFeatures() {
             </div>
             <h3 className="text-lg font-semibold text-white">Smartphone suffit</h3>
             <p className="mt-2 text-sm text-white/30 leading-relaxed">
-              Pas de camera 360, pas de LiDAR. Votre iPhone ou Android fait l&apos;affaire.
+              Pas de caméra 360, pas de LiDAR. Votre iPhone ou Android fait l&apos;affaire.
             </p>
           </div>
 
@@ -270,9 +270,9 @@ function BentoFeatures() {
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10">
               <ClockIcon />
             </div>
-            <h3 className="text-lg font-semibold text-white">Livre en 24 heures</h3>
+            <h3 className="text-lg font-semibold text-white">Livré en 24 heures</h3>
             <p className="mt-2 text-sm text-white/30 leading-relaxed">
-              Envoyez votre video le matin, recevez votre visite 3D le soir. URL + embed prets.
+              Envoyez votre vidéo le matin, recevez votre visite 3D le soir. URL + embed prêts.
             </p>
           </div>
 
@@ -288,7 +288,7 @@ function BentoFeatures() {
                 </h3>
                 <p className="mt-2 text-sm text-white/30 leading-relaxed">
                   29 CHF par tour au lieu de 3&apos;000+ CHF de camera + 70 CHF/mois d&apos;abonnement.
-                  Pas d&apos;equipement a acheter. Marge maximale pour votre agence.
+                  Pas d&apos;équipement à acheter. Marge maximale pour votre agence.
                 </p>
               </div>
             </div>
@@ -308,17 +308,17 @@ function HowItWorks() {
     {
       num: "01",
       title: "Filmez votre bien",
-      desc: "Parcourez chaque piece avec votre smartphone pendant 5 minutes. On vous fournit un guide de capture simple.",
+      desc: "Parcourez chaque pièce avec votre smartphone pendant 5 minutes. On vous fournit un guide de capture simple.",
     },
     {
       num: "02",
-      title: "Envoyez-nous la video",
+      title: "Envoyez-nous la vidéo",
       desc: "Par WeTransfer, Google Drive ou WhatsApp. On s&apos;occupe de tout le traitement technique.",
     },
     {
       num: "03",
       title: "Recevez votre visite 3D",
-      desc: "En 24h : un lien partageable + un code embed pour l&apos;integrer sur votre site ou vos annonces.",
+      desc: "En 24h : un lien partageable + un code embed pour l&apos;intégrer sur votre site ou vos annonces.",
     },
   ];
 
@@ -334,11 +334,11 @@ function HowItWorks() {
             Simple comme 1 — 2 — 3
           </h2>
           <p className="mt-3 text-white/30">
-            Aucune competence technique requise
+            Aucune compétence technique requise
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {steps.map((step, i) => (
             <div key={step.num} className="relative">
               {i < steps.length - 1 && (
@@ -346,7 +346,7 @@ function HowItWorks() {
               )}
               <div className="glass rounded-2xl p-8 h-full transition-all duration-300">
                 <span className="text-[11px] font-bold uppercase tracking-widest text-blue-400/50">
-                  Etape {step.num}
+                  Étape {step.num}
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-white">
                   {step.title}
@@ -377,7 +377,7 @@ function ComparisonSection() {
             Visite3D vs Matterport
           </h2>
           <p className="mt-3 text-white/30">
-            La meme qualite pour une fraction du prix
+            La même qualité pour une fraction du prix
           </p>
         </div>
 
@@ -391,16 +391,16 @@ function ComparisonSection() {
                   Visite<span className="text-blue-400">3D</span>
                 </span>
                 <span className="rounded-full bg-blue-500/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-400">
-                  Recommande
+                  Recommandé
                 </span>
               </div>
               <ul className="space-y-4">
-                <ComparisonRow check label="Equipement" value="Smartphone" />
-                <ComparisonRow check label="Cout par tour" value="29 CHF" />
+                <ComparisonRow check label="Équipement" value="Smartphone" />
+                <ComparisonRow check label="Coût par tour" value="29 CHF" />
                 <ComparisonRow check label="Abonnement" value="Aucun" />
-                <ComparisonRow check label="Qualite reflets" value="Photorealiste" />
+                <ComparisonRow check label="Qualité reflets" value="Photoréaliste" />
                 <ComparisonRow check label="Navigation" value="Libre et continue" />
-                <ComparisonRow check label="Delai" value="24h" />
+                <ComparisonRow check label="Délai" value="24h" />
               </ul>
             </div>
           </div>
@@ -411,12 +411,12 @@ function ComparisonSection() {
               <span className="text-lg font-semibold text-white/70">Matterport</span>
             </div>
             <ul className="space-y-4">
-              <ComparisonRow label="Equipement" value="Camera 3'000+ CHF" />
-              <ComparisonRow label="Cout par tour" value="~150+ CHF" />
+              <ComparisonRow label="Équipement" value="Camera 3'000+ CHF" />
+              <ComparisonRow label="Coût par tour" value="~150+ CHF" />
               <ComparisonRow label="Abonnement" value="70-150 CHF/mois" />
-              <ComparisonRow label="Qualite reflets" value="Surfaces deformees" />
-              <ComparisonRow label="Navigation" value="Teleportation" />
-              <ComparisonRow label="Delai" value="1h+ sur place" />
+              <ComparisonRow label="Qualité reflets" value="Surfaces déformées" />
+              <ComparisonRow label="Navigation" value="Téléportation" />
+              <ComparisonRow label="Délai" value="1h+ sur place" />
             </ul>
           </div>
         </div>
@@ -477,13 +477,13 @@ function PricingSection() {
       name: "A la carte",
       price: "29",
       unit: "CHF / tour",
-      desc: "Ideal pour tester",
+      desc: "Idéal pour tester",
       features: [
-        "1 visite 3D photorealiste",
+        "1 visite 3D photoréaliste",
         "Lien partageable",
         "Code embed iframe",
-        "Heberge 12 mois",
-        "Livre en 24h",
+        "Hébergé 12 mois",
+        "Livré en 24h",
       ],
       cta: "Commander",
       href: STRIPE_LINK_SINGLE,
@@ -496,9 +496,9 @@ function PricingSection() {
       desc: "Le plus populaire — 19.90 CHF/tour",
       features: [
         "10 visites 3D",
-        "Economisez 30%",
+        "Économisez 30%",
         "Lien + embed par tour",
-        "Heberge 12 mois",
+        "Hébergé 12 mois",
         "Support prioritaire",
       ],
       cta: "Commander le pack",
@@ -512,10 +512,10 @@ function PricingSection() {
       desc: "Pour les agences actives — 15.98 CHF/tour",
       features: [
         "50 visites 3D",
-        "Economisez 45%",
+        "Économisez 45%",
         "Lien + embed par tour",
-        "Heberge 12 mois",
-        "Support dedie",
+        "Hébergé 12 mois",
+        "Support dédié",
       ],
       cta: "Commander le pack",
       href: STRIPE_LINK_PACK50,
@@ -541,7 +541,7 @@ function PricingSection() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-3">
           {plans.map((plan) => (
             <div key={plan.name} className="relative">
               {plan.highlighted && (
@@ -598,7 +598,7 @@ function PricingSection() {
         </div>
 
         <p className="mt-12 text-center text-sm text-white/20">
-          Besoin de visites illimitees ?{" "}
+          Besoin de visites illimitées ?{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}?subject=Visite3D%20-%20Plan%20illimité`}
             className="text-blue-400/70 underline underline-offset-4 hover:text-blue-400 transition-colors"
@@ -619,19 +619,19 @@ function FAQSection() {
   const faqs = [
     {
       q: "Quel smartphone faut-il ?",
-      a: "Tout smartphone de 2020 ou plus recent — iPhone ou Android. Pas besoin de capteur LiDAR ni de camera 360.",
+      a: "Tout smartphone de 2020 ou plus récent — iPhone ou Android. Pas besoin de capteur LiDAR ni de caméra 360.",
     },
     {
       q: "Combien de temps dure la capture ?",
-      a: "5 a 10 minutes pour un appartement standard (3-4 pieces). On vous fournit un guide de capture etape par etape.",
+      a: "5 à 10 minutes pour un appartement standard (3-4 pièces). On vous fournit un guide de capture étape par étape.",
     },
     {
-      q: "Quel est le delai de livraison ?",
-      a: "24 heures apres reception de votre video. Vous recevez un lien partageable et un code embed pour votre site.",
+      q: "Quel est le délai de livraison ?",
+      a: "24 heures après réception de votre vidéo. Vous recevez un lien partageable et un code embed pour votre site.",
     },
     {
-      q: "Comment integrer la visite sur mon site ou mes annonces ?",
-      a: "Vous recevez un code iframe a coller sur n'importe quel site (WordPress, Wix, Squarespace, Webflow, Homegate...). Un simple copier-coller.",
+      q: "Comment intégrer la visite sur mon site ou mes annonces ?",
+      a: "Vous recevez un code iframe à coller sur n'importe quel site (WordPress, Wix, Squarespace, Webflow, Homegate...). Un simple copier-coller.",
     },
     {
       q: "Combien de temps la visite reste en ligne ?",
@@ -639,11 +639,11 @@ function FAQSection() {
     },
     {
       q: "C'est quoi le Gaussian Splatting ?",
-      a: "La technologie utilisee par Zillow aux Etats-Unis. Elle cree une scene 3D photorealiste a partir d'une video — avec les vrais reflets, la vraie lumiere. Plus immersif qu'une visite 360 classique.",
+      a: "La technologie utilisée par Zillow aux États-Unis. Elle crée une scène 3D photoréaliste à partir d'une vidéo — avec les vrais reflets, la vraie lumière. Plus immersif qu'une visite 360 classique.",
     },
     {
-      q: "Est-ce que ca marche sur mobile ?",
-      a: "Oui. Desktop, tablette et smartphone. Vos acheteurs explorent le bien directement depuis leur canape.",
+      q: "Est-ce que ça marche sur mobile ?",
+      a: "Oui. Desktop, tablette et smartphone. Vos acheteurs explorent le bien directement depuis leur canapé.",
     },
   ];
 
@@ -652,7 +652,7 @@ function FAQSection() {
       <div className="mx-auto max-w-2xl px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Questions frequentes
+            Questions fréquentes
           </h2>
         </div>
         <Accordion className="space-y-2">
@@ -688,14 +688,14 @@ function CTASection() {
       </div>
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <h2 className="text-3xl font-bold text-white sm:text-5xl">
-          Votre premiere visite 3D
+          Votre première visite 3D
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
             en 24 heures
           </span>
         </h2>
         <p className="mt-5 text-lg text-white/30">
-          Rejoignez les agences qui reduisent les visites inutiles et
+          Rejoignez les agences qui réduisent les visites inutiles et
           impressionnent leurs acheteurs.
         </p>
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -737,7 +737,7 @@ function Footer() {
               Visite<span className="text-blue-400">3D</span>
             </p>
             <p className="mt-2 text-[13px] text-white/20">
-              Visites 3D photorealistes pour l&apos;immobilier suisse.
+              Visites 3D photoréalistes pour l&apos;immobilier suisse.
             </p>
             <p className="mt-1 text-[11px] text-white/10">
               SwissEmpire2 Sarl — Moutier, Suisse
@@ -752,7 +752,7 @@ function Footer() {
             </a>
             <div className="flex gap-5 text-white/15">
               <a href="#how" className="hover:text-white/40 transition-colors">
-                Comment ca marche
+                Comment ça marche
               </a>
               <a href="#pricing" className="hover:text-white/40 transition-colors">
                 Tarifs
@@ -765,7 +765,7 @@ function Footer() {
         </div>
         <div className="mt-10 h-px bg-white/[0.04]" />
         <p className="mt-6 text-center text-[11px] text-white/10">
-          © {new Date().getFullYear()} SwissEmpire2 Sarl. Tous droits reserves.
+          © {new Date().getFullYear()} SwissEmpire2 Sarl. Tous droits réservés.
         </p>
       </div>
     </footer>
