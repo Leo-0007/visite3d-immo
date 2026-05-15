@@ -15,6 +15,7 @@ import {
   GrainOverlay,
   HoverScale,
 } from "@/components/animations";
+import { DemoViewer } from "@/components/demo-viewer";
 
 const DEMO_3D_URL =
   "https://cloud.splatlabs.ai/viewer/f95e1016-b5db-40ae-81cc-c6354b1c470c?view=splat";
@@ -183,14 +184,7 @@ function DemoSection() {
                 </div>
               </div>
             </div>
-            <iframe
-              src={DEMO_3D_URL}
-              width="100%"
-              height="500"
-              className="block w-full sm:h-[560px]"
-              allow="fullscreen; xr-spatial-tracking"
-              loading="lazy"
-            />
+            <DemoViewer src={DEMO_3D_URL} />
           </div>
         </FadeIn>
       </div>
