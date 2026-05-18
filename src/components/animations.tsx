@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
-import { motion } from "motion/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef, useEffect, useState, type ReactNode } from "react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  useScroll,
+  animate,
+} from "motion/react";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -82,6 +84,10 @@ export function StaggerItem({
   );
 }
 
+/**
+ * Counter -- uses Motion's animate() instead of GSAP.
+ * Triggers when the element enters the viewport.
+ */
 export function Counter({
   target,
   suffix = "",
@@ -92,33 +98,33 @@ export function Counter({
   prefix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-
-  useGSAP(() => {
-    const obj = { val: 0 };
-    gsap.to(obj, {
-      val: target,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ref.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      onUpdate: () => {
-        if (ref.current)
-          ref.current.textContent =
-            prefix + Math.round(obj.val).toLocaleString("fr-CH") + suffix;
-      },
-    });
-  }, []);
-
-  return (
-    <span ref={ref}>
-      {prefix}0{suffix}
-    </span>
+  const isInView = useInView(ref, { once: true, margin: "-15%" });
+  const motionVal = useMotionValue(0);
+  const rounded = useTransform(motionVal, (v) =>
+    prefix + Math.round(v).toLocaleString("fr-CH") + suffix
   );
+  const [display, setDisplay] = useState(prefix + "0" + suffix);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const controls = animate(motionVal, target, {
+      duration: 2,
+      ease: "easeOut",
+    });
+    const unsubscribe = rounded.on("change", (v) => setDisplay(v));
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [isInView, motionVal, target, rounded]);
+
+  return <span ref={ref}>{display}</span>;
 }
 
+/**
+ * TextReveal -- scroll-linked word opacity, replaces GSAP ScrollTrigger.
+ * Uses Motion's useScroll + useTransform for scrub-based animation.
+ */
 export function TextReveal({
   text,
   className = "",
@@ -127,53 +133,65 @@ export function TextReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 80%", "start 30%"],
+  });
 
-  useGSAP(() => {
-    const words = ref.current?.querySelectorAll(".word");
-    if (!words) return;
-    gsap.fromTo(
-      words,
-      { opacity: 0.1 },
-      {
-        opacity: 1,
-        stagger: 0.04,
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 80%",
-          end: "top 30%",
-          scrub: 1,
-        },
-      }
-    );
-  }, []);
+  const words = text.split(" ");
 
   return (
     <div ref={ref} className={className}>
-      {text.split(" ").map((word, i) => (
-        <span key={i} className="word inline-block mr-[0.25em]">
-          {word}
-        </span>
-      ))}
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = (i + 1) / words.length;
+        return (
+          <TextRevealWord
+            key={i}
+            word={word}
+            progress={scrollYProgress}
+            range={[start, end]}
+          />
+        );
+      })}
     </div>
   );
 }
 
+function TextRevealWord({
+  word,
+  progress,
+  range,
+}: {
+  word: string;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  range: [number, number];
+}) {
+  const opacity = useTransform(progress, range, [0.1, 1]);
+  return (
+    <motion.span
+      style={{ opacity }}
+      className="inline-block mr-[0.25em]"
+    >
+      {word}
+    </motion.span>
+  );
+}
+
+/**
+ * GrainOverlay -- uses a static CSS background instead of a live SVG filter
+ * to avoid constant GPU compositing of a full-screen filtered SVG.
+ */
 export function GrainOverlay() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.025]">
-      <svg className="h-full w-full">
-        <filter id="grain">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.7"
-            numOctaves="3"
-            stitchTiles="stitch"
-          />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#grain)" />
-      </svg>
-    </div>
+    <div
+      className="pointer-events-none fixed inset-0 z-50 opacity-[0.025]"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundRepeat: "repeat",
+        backgroundSize: "256px 256px",
+      }}
+    />
   );
 }
 

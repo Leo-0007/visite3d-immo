@@ -1,8 +1,15 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/lib/constants";
+import type { Metadata } from "next";
 
-const CONTACT_EMAIL = "lionel.ndombele@gmail.com";
-const WHATSAPP_NUMBER = "41791234567"; // TODO: remplacer par ton numéro
+export const metadata: Metadata = {
+  title: "Paiement confirme",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ConfirmationPage() {
   return (
@@ -43,7 +50,12 @@ export default function ConfirmationPage() {
             description="Parcourez chaque pièce lentement avec votre smartphone (5-10 minutes)."
           >
             <div className="mt-4 rounded-xl bg-white/[0.02] border border-white/[0.04] p-4 text-sm text-white/30">
-              <p className="font-medium text-white/60 mb-2">Guide rapide de capture :</p>
+              <p className="font-medium text-white/60 mb-2">
+              Guide rapide de capture
+              <a href="/guide-capture" className="ml-2 text-blue-400/50 underline underline-offset-4 hover:text-blue-400 transition-colors text-xs font-normal">
+                Voir le guide complet
+              </a>
+            </p>
               <ul className="space-y-1.5 list-disc pl-4">
                 <li>Tenez le téléphone en <strong className="text-white/60">mode paysage</strong>, à hauteur de poitrine</li>
                 <li>Marchez lentement — environ <strong className="text-white/60">1 pas par seconde</strong></li>

@@ -16,13 +16,15 @@ import {
   HoverScale,
 } from "@/components/animations";
 import { DemoViewer } from "@/components/demo-viewer";
+import { JsonLd } from "@/components/json-ld";
+import { CONTACT_EMAIL } from "@/lib/constants";
+import { productSchemas, serviceSchema } from "@/lib/schema";
 
 const DEMO_3D_URL =
   "https://cloud.splatlabs.ai/viewer/f95e1016-b5db-40ae-81cc-c6354b1c470c?view=splat";
-const STRIPE_LINK_SINGLE = "#";
-const STRIPE_LINK_PACK10 = "#";
-const STRIPE_LINK_PACK50 = "#";
-const CONTACT_EMAIL = "lionel.ndombele@gmail.com";
+const STRIPE_LINK_SINGLE = "https://buy.stripe.com/14A00i59Ch1c9pf4oXfEk00";
+const STRIPE_LINK_PACK10 = "https://buy.stripe.com/cNi7sK31u6my58Z8FdfEk01";
+const STRIPE_LINK_PACK50 = "https://buy.stripe.com/7sY5kC31u8uG44V2gPfEk02";
 
 /* ════════════════════════════════════════════
    NAVBAR
@@ -180,7 +182,7 @@ function DemoSection() {
               </div>
               <div className="flex-1 mx-8">
                 <div className="h-7 max-w-xs mx-auto rounded-lg bg-white/[0.03] flex items-center justify-center text-[11px] text-white/15 font-mono">
-                  visite3d.ch/demo/appartement-geneve
+                  visite3dimmo.ch/demo/appartement-geneve
                 </div>
               </div>
             </div>
@@ -611,14 +613,14 @@ function Footer() {
               SwissEmpire2 Sàrl — Moutier, Suisse
             </p>
           </div>
-          <div className="flex flex-col gap-2 text-[13px] sm:items-end">
+          <div className="flex flex-col gap-3 text-[13px] sm:items-end">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="text-white/20 hover:text-white/50 transition-colors"
             >
               {CONTACT_EMAIL}
             </a>
-            <div className="flex gap-5 text-white/10">
+            <div className="flex flex-wrap gap-5 text-white/10">
               <a href="#comment-ca-marche" className="hover:text-white/30 transition-colors">
                 Comment ça marche
               </a>
@@ -627,6 +629,17 @@ function Footer() {
               </a>
               <a href="#faq" className="hover:text-white/30 transition-colors">
                 FAQ
+              </a>
+              <a href="/guide-capture" className="hover:text-white/30 transition-colors">
+                Guide de capture
+              </a>
+            </div>
+            <div className="flex gap-5 text-white/8">
+              <a href="/cgv" className="hover:text-white/20 transition-colors">
+                CGV
+              </a>
+              <a href="/confidentialite" className="hover:text-white/20 transition-colors">
+                Confidentialité
               </a>
             </div>
           </div>
@@ -647,6 +660,10 @@ function Footer() {
 export default function Home() {
   return (
     <main className="bg-[#060a13]">
+      <JsonLd data={serviceSchema} />
+      {productSchemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <GrainOverlay />
       <Navbar />
       <HeroSection />
