@@ -28,14 +28,24 @@ export function DemoViewer({ src }: { src: string }) {
   return (
     <div ref={containerRef} className="relative" style={{ minHeight: 500 }}>
       {started ? (
-        <iframe
-          src={src}
-          width="100%"
-          height="500"
-          className="block w-full sm:h-[560px]"
-          allow="fullscreen; xr-spatial-tracking"
-          title="Visite 3D interactive - Appartement demo"
-        />
+        <div className="relative overflow-hidden w-full h-[500px] sm:h-[560px]">
+          <iframe
+            src={src}
+            width="100%"
+            height="100%"
+            className="block w-full h-full"
+            allow="fullscreen; xr-spatial-tracking"
+            title="Visite 3D interactive - Appartement demo"
+          />
+          {/* Masquer le branding tiers en bas a droite */}
+          <div className="absolute bottom-0 right-0 w-[220px] h-[50px] bg-gradient-to-l from-black via-black/95 to-transparent pointer-events-none z-10 flex items-center justify-end pr-3">
+            <span className="text-[11px] font-medium text-white/30 tracking-wide">
+              Visite3D Immo
+            </span>
+          </div>
+          {/* Masquer le bouton play initial en bas a gauche si present */}
+          <div className="absolute bottom-0 left-0 w-[60px] h-[50px] bg-gradient-to-r from-black to-transparent pointer-events-none z-10" />
+        </div>
       ) : (
         <button
           type="button"
