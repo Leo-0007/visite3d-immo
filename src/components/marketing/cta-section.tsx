@@ -5,36 +5,44 @@ import { FadeIn } from "@/components/animations";
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-36 section-warm">
-      <div className="relative mx-auto max-w-3xl px-6 text-center">
+    <section className="relative py-28 md:py-40">
+      <div className="mx-auto max-w-3xl px-6 text-center">
         <FadeIn>
-          <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.03em] text-[var(--v3d-text)]">
-            Pr{"ê"}t {"à"} transformer vos visites&nbsp;?
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-[var(--v3d-blue)]">
+            Commencer
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.05}>
+          <h2 className="mt-4 text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-[-0.035em] leading-[1.1] text-[var(--v3d-text)]">
+            Pr{"ê"}t {"à"} transformer
+            <br />
+            vos annonces&nbsp;?
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-[var(--v3d-text-secondary)] sm:text-base">
-            Rejoignez les agences suisses qui modernisent leurs annonces.
-            Premi{"è"}re visite 3D d{"è"}s 49&nbsp;CHF.
+          <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-[var(--v3d-text-secondary)]">
+            Premi{"è"}re visite 3D d{"è"}s 49 CHF.
+            Sans engagement, livr{"é"}e en 24h.
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.2}>
-          <div className="mt-10">
+        <FadeIn delay={0.15}>
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="#tarifs"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "bg-[var(--v3d-blue)] hover:bg-[#164060] text-white text-sm font-semibold px-10 py-6 rounded-lg shadow-md transition-all"
+                "bg-[var(--v3d-blue)] hover:bg-[#164060] text-white text-sm font-semibold px-10 py-6 rounded-lg shadow-sm transition-all"
               )}
             >
-              Commander maintenant &rarr;
+              Voir les offres
             </a>
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.3}>
+        <FadeIn delay={0.2}>
           <p className="mt-6 text-xs text-[var(--v3d-text-muted)]">
             Des questions ?{" "}
             <a

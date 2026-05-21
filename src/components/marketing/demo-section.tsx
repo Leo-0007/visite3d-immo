@@ -1,5 +1,4 @@
 import { SectionWrapper } from "@/components/shared/section-wrapper";
-import { SectionHeader } from "@/components/shared/section-header";
 import { DemoViewer } from "@/components/demo-viewer";
 import { FadeIn } from "@/components/animations";
 
@@ -8,39 +7,37 @@ const DEMO_3D_URL =
 
 export function DemoSection() {
   return (
-    <SectionWrapper id="demo" className="pb-24 sm:pb-32 pt-0 md:pt-0">
-      <SectionHeader
-        badge="Démonstration"
-        title="Explorez cet intérieur"
-        description="Cliquez et déplacez votre souris pour naviguer — exactement comme vos acheteurs le feront."
-      />
-
-      <FadeIn delay={0.15}>
-        <div className="rounded-2xl border border-[var(--v3d-warm-border)] bg-white shadow-lg overflow-hidden">
-          {/* Browser chrome */}
-          <div className="flex items-center gap-2 px-5 py-3.5 border-b border-[var(--v3d-warm-border)] bg-[var(--v3d-warm-bg)]">
-            <div className="flex gap-1.5">
-              <div className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
-              <div className="h-2.5 w-2.5 rounded-full bg-amber-400/60" />
-              <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
-            </div>
-            <div className="flex-1 mx-8">
-              <div className="h-7 max-w-xs mx-auto rounded-lg bg-white flex items-center justify-center text-[11px] text-[var(--v3d-text-muted)] font-mono border border-[var(--v3d-warm-border)]">
-                visite3dimmo.ch/demo/appartement-geneve
-              </div>
-            </div>
-          </div>
-
-          {/* 3D Viewer */}
-          <DemoViewer src={DEMO_3D_URL} />
+    <SectionWrapper id="demo" className="section-warm">
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Left — text */}
+        <div className="lg:col-span-4">
+          <FadeIn>
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-[var(--v3d-blue)]">
+              D{"é"}monstration
+            </p>
+            <h2 className="mt-3 text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-[-0.03em] text-[var(--v3d-text)]">
+              Explorez cet{" "}
+              <span className="text-[var(--v3d-text-muted)]">int{"é"}rieur</span>
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-[var(--v3d-text-secondary)]">
+              Cliquez et d{"é"}placez votre souris pour naviguer. Exactement comme
+              vos acheteurs le feront.
+            </p>
+            <p className="mt-6 text-xs text-[var(--v3d-text-muted)]">
+              Cr{"é"}{"é"} {"à"} partir d{"'"}une simple vid{"é"}o smartphone
+            </p>
+          </FadeIn>
         </div>
-      </FadeIn>
 
-      <FadeIn delay={0.3}>
-        <p className="mt-8 text-center text-sm text-[var(--v3d-text-muted)]">
-          Cette visite a été créée à partir d&apos;une simple vidéo smartphone
-        </p>
-      </FadeIn>
+        {/* Right — viewer */}
+        <div className="lg:col-span-8">
+          <FadeIn delay={0.1}>
+            <div className="overflow-hidden rounded-xl border border-[var(--v3d-warm-border)] bg-white shadow-lg">
+              <DemoViewer src={DEMO_3D_URL} />
+            </div>
+          </FadeIn>
+        </div>
+      </div>
     </SectionWrapper>
   );
 }

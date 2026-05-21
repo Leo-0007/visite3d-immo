@@ -12,7 +12,7 @@ export function SectionHeader({
   badge,
   title,
   description,
-  align = "center",
+  align = "left",
   className,
 }: SectionHeaderProps) {
   return (

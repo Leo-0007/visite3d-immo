@@ -12,21 +12,54 @@ import {
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
+/**
+ * FadeIn — reliable viewport-triggered animation.
+ * Uses amount: 0.05 (not margin) so it always triggers even if already in view.
+ */
 export function FadeIn({
   children,
   delay = 0,
   className = "",
+  y = 24,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  y?: number;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32, filter: "blur(4px)" }}
+      initial={{ opacity: 0, y, filter: "blur(3px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.7, delay, ease: EASE }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * MountFadeIn — triggers on mount, not on viewport.
+ * For above-the-fold content (hero) that's always visible on load.
+ */
+export function MountFadeIn({
+  children,
+  delay = 0,
+  className = "",
+  y = 20,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  y?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -45,7 +78,7 @@ export function Stagger({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, amount: 0.05 }}
       variants={{
         hidden: {},
         visible: {
@@ -69,11 +102,10 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
+        hidden: { opacity: 0, y: 20 },
         visible: {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           transition: { duration: 0.6, ease: EASE },
         },
       }}
@@ -98,7 +130,7 @@ export function Counter({
   prefix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-15%" });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const motionVal = useMotionValue(0);
   const rounded = useTransform(motionVal, (v) =>
     prefix + Math.round(v).toLocaleString("fr-CH") + suffix
@@ -123,7 +155,6 @@ export function Counter({
 
 /**
  * TextReveal -- scroll-linked word opacity, replaces GSAP ScrollTrigger.
- * Uses Motion's useScroll + useTransform for scrub-based animation.
  */
 export function TextReveal({
   text,
@@ -179,8 +210,7 @@ function TextRevealWord({
 }
 
 /**
- * GrainOverlay -- uses a static CSS background instead of a live SVG filter
- * to avoid constant GPU compositing of a full-screen filtered SVG.
+ * GrainOverlay -- subtle texture.
  */
 export function GrainOverlay() {
   return (
@@ -204,7 +234,7 @@ export function HoverScale({
 }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
+      whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
       className={className}
     >
       {children}
