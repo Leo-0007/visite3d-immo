@@ -13,14 +13,13 @@ export const metadata: Metadata = {
 
 export default function CGVPage() {
   return (
-    <main className="min-h-screen bg-[#060a13] relative">
+    <main className="min-h-screen bg-white">
       <JsonLd data={breadcrumbSchema("Conditions generales de vente", "/cgv")} />
-      <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-      <div className="relative mx-auto max-w-3xl px-6 py-20">
+      <div className="mx-auto max-w-3xl px-6 py-20">
         {/* Back */}
         <a
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-white/20 hover:text-white/50 transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-[var(--v3d-text-muted)] hover:text-[var(--v3d-text)] transition-colors mb-12"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -28,14 +27,14 @@ export default function CGVPage() {
           Retour
         </a>
 
-        <h1 className="text-3xl font-bold text-white tracking-[-0.03em] mb-2">
+        <h1 className="text-3xl font-bold text-[var(--v3d-text)] tracking-[-0.03em] mb-2">
           Conditions generales de vente
         </h1>
-        <p className="text-sm text-white/20 mb-12">
+        <p className="text-sm text-[var(--v3d-text-muted)] mb-12">
           Derniere mise a jour : mai 2026
         </p>
 
-        <div className="space-y-10 text-sm text-white/35 leading-relaxed">
+        <div className="space-y-10 text-sm text-[var(--v3d-text-secondary)] leading-relaxed">
           <Section title="1. Prestataire">
             <p>
               SwissEmpire2 Sarl<br />
@@ -49,7 +48,8 @@ export default function CGVPage() {
               Visite3D Immo propose un service de creation de visites virtuelles
               3D navigables a partir de videos fournies par le client. Le service
               comprend le traitement de la video, la generation du modele 3D et
-              l&apos;hebergement de la visite pendant 12 mois.
+              l&apos;hebergement de la visite (6 mois pour l&apos;offre Solo,
+              12 mois pour les offres Pack Immo et Pack Agence).
             </p>
           </Section>
 
@@ -84,8 +84,10 @@ export default function CGVPage() {
 
           <Section title="6. Hebergement">
             <p>
-              Chaque visite 3D est hebergee pendant 12 mois a compter de la
-              livraison. Au-dela, le client peut renouveler l&apos;hebergement.
+              Chaque visite 3D est hebergee pendant 6 mois (offre Solo) ou
+              12 mois (Pack Immo, Pack Agence) a compter de la livraison.
+              Au-dela, le client peut renouveler l&apos;hebergement a
+              9 CHF/mois.
               SwissEmpire2 Sarl se reserve le droit de supprimer les visites non
               renouvelees apres un delai de grace de 30 jours.
             </p>
@@ -139,7 +141,7 @@ function Section({
 }) {
   return (
     <div>
-      <h2 className="text-base font-semibold text-white/60 mb-3">{title}</h2>
+      <h2 className="text-base font-semibold text-[var(--v3d-text)] mb-3">{title}</h2>
       {children}
     </div>
   );

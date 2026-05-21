@@ -32,7 +32,7 @@ export const localBusinessSchema = {
     "@type": "Country",
     name: "Switzerland",
   },
-  priceRange: "CHF 15-29 par bien",
+  priceRange: "CHF 49-89 par bien",
   currenciesAccepted: "CHF",
   paymentAccepted: "Credit Card, Debit Card",
   image: `${SITE_URL}/og-image.png`,
@@ -57,10 +57,10 @@ export const productSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${SITE_URL}/#product-single`,
-    name: "Visite 3D - A la carte",
+    "@id": `${SITE_URL}/#product-solo`,
+    name: "Visite 3D - Solo",
     description:
-      "1 visite 3D navigable d'un bien immobilier. Lien partageable, code embed iframe, heberge 12 mois, livre en 24h.",
+      "1 visite 3D navigable d'un bien immobilier. Lien partageable, code embed iframe, miniature HD, QR code, heberge 6 mois, livre en 24h.",
     brand: {
       "@type": "Brand",
       name: "Visite3D Immo",
@@ -68,7 +68,7 @@ export const productSchemas = [
     offers: {
       "@type": "Offer",
       url: `${SITE_URL}/#tarifs`,
-      price: "29",
+      price: "49",
       priceCurrency: "CHF",
       availability: "https://schema.org/InStock",
       priceValidUntil: "2027-12-31",
@@ -80,10 +80,10 @@ export const productSchemas = [
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${SITE_URL}/#product-pack10`,
-    name: "Visite 3D - Pack 10 biens",
+    "@id": `${SITE_URL}/#product-pack`,
+    name: "Visite 3D - Pack Immo",
     description:
-      "10 visites 3D navigables de biens immobiliers. 19.90 CHF par bien. Lien + embed par bien, heberge 12 mois, support prioritaire.",
+      "Visite 3D navigable + plan 2D professionnel + 5 photos HD + texte d'annonce IA + dossier pret a publier Homegate. Heberge 12 mois, livre en 24h.",
     brand: {
       "@type": "Brand",
       name: "Visite3D Immo",
@@ -91,30 +91,7 @@ export const productSchemas = [
     offers: {
       "@type": "Offer",
       url: `${SITE_URL}/#tarifs`,
-      price: "199",
-      priceCurrency: "CHF",
-      availability: "https://schema.org/InStock",
-      priceValidUntil: "2027-12-31",
-      seller: {
-        "@id": `${SITE_URL}/#business`,
-      },
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": `${SITE_URL}/#product-pack50`,
-    name: "Visite 3D - Pack 50 biens",
-    description:
-      "50 visites 3D navigables de biens immobiliers. 15.98 CHF par bien. Lien + embed par bien, heberge 12 mois, support dedie.",
-    brand: {
-      "@type": "Brand",
-      name: "Visite3D Immo",
-    },
-    offers: {
-      "@type": "Offer",
-      url: `${SITE_URL}/#tarifs`,
-      price: "799",
+      price: "89",
       priceCurrency: "CHF",
       availability: "https://schema.org/InStock",
       priceValidUntil: "2027-12-31",
@@ -176,15 +153,11 @@ export const serviceSchema = {
     itemListElement: [
       {
         "@type": "Offer",
-        itemOffered: { "@id": `${SITE_URL}/#product-single` },
+        itemOffered: { "@id": `${SITE_URL}/#product-solo` },
       },
       {
         "@type": "Offer",
-        itemOffered: { "@id": `${SITE_URL}/#product-pack10` },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@id": `${SITE_URL}/#product-pack50` },
+        itemOffered: { "@id": `${SITE_URL}/#product-pack` },
       },
     ],
   },
